@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.linlinjava.litemall.db.dao.XiaolvquanWithdrawHistoryMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.XiaolvquanWithdrawHistory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="account_no" jdbcType="VARCHAR" property="accountNo" />
+    <result column="cash" jdbcType="DECIMAL" property="cash" />
+    <result column="currrent_balance" jdbcType="DECIMAL" property="currrentBalance" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="apply_time" jdbcType="TIMESTAMP" property="applyTime" />
+    <result column="review_time" jdbcType="TIMESTAMP" property="reviewTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, real_name, account_no, cash, currrent_balance, status, operator, note, 
+    apply_time, review_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xiaolvquan_withdraw_history
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xiaolvquan_withdraw_history
+    where user_id = #{userId,jdbcType=INTEGER}
+    <if test="status != 0">
+      and status = #{status,jdbcType=INTEGER}
+    </if>
+    limit #{offset,jdbcType=INTEGER},#{pageNum,jdbcType=INTEGER}
+  </select>
+  <select id="calCumulativeSettlementAmount" parameterType="java.lang.Integer" resultType="Integer">
+    select
+    sum(cash)
+    from xiaolvquan_withdraw_history
+    where user_id = #{userId,jdbcType=INTEGER}
+    <if test="status != 0">
+      and status = #{status,jdbcType=INTEGER}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xiaolvquan_withdraw_history
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanWithdrawHistory">
+    insert into xiaolvquan_withdraw_history (id, user_id, real_name, 
+      account_no, cash, currrent_balance, 
+      status, operator, note, 
+      apply_time, review_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, 
+      #{accountNo,jdbcType=VARCHAR}, #{cash,jdbcType=DECIMAL}, #{currrentBalance,jdbcType=DECIMAL}, 
+      #{status,jdbcType=TINYINT}, #{operator,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, 
+      #{applyTime,jdbcType=TIMESTAMP}, #{reviewTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanWithdrawHistory">
+    insert into xiaolvquan_withdraw_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="accountNo != null">
+        account_no,
+      </if>
+      <if test="cash != null">
+        cash,
+      </if>
+      <if test="currrentBalance != null">
+        currrent_balance,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="applyTime != null">
+        apply_time,
+      </if>
+      <if test="reviewTime != null">
+        review_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null">
+        #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cash != null">
+        #{cash,jdbcType=DECIMAL},
+      </if>
+      <if test="currrentBalance != null">
+        #{currrentBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null">
+        #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviewTime != null">
+        #{reviewTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanWithdrawHistory">
+    update xiaolvquan_withdraw_history
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null">
+        account_no = #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cash != null">
+        cash = #{cash,jdbcType=DECIMAL},
+      </if>
+      <if test="currrentBalance != null">
+        currrent_balance = #{currrentBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null">
+        apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviewTime != null">
+        review_time = #{reviewTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanWithdrawHistory">
+    update xiaolvquan_withdraw_history
+    set user_id = #{userId,jdbcType=INTEGER},
+      real_name = #{realName,jdbcType=VARCHAR},
+      account_no = #{accountNo,jdbcType=VARCHAR},
+      cash = #{cash,jdbcType=DECIMAL},
+      currrent_balance = #{currrentBalance,jdbcType=DECIMAL},
+      status = #{status,jdbcType=TINYINT},
+      operator = #{operator,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      review_time = #{reviewTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

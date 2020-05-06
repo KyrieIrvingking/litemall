@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.linlinjava.litemall.db.dao.XiaolvquanColumnGoodsMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.XiaolvquanColumnGoods">
+    <id column="columnId" jdbcType="INTEGER" property="columnid" />
+    <id column="skuId" jdbcType="VARCHAR" property="skuid" />
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="couponLink" jdbcType="VARCHAR" property="couponlink" />
+    <result column="skuSource" jdbcType="TINYINT" property="skusource" />
+    <result column="position" jdbcType="INTEGER" property="position" />
+    <result column="isValid" jdbcType="TINYINT" property="isvalid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.linlinjava.litemall.db.domain.XiaolvquanColumnGoods">
+    <result column="note" jdbcType="LONGVARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    columnId, skuId, id, couponLink, skuSource, position, isValid
+  </sql>
+  <sql id="Blob_Column_List">
+    note
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanColumnGoodsKey" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xiaolvquan_column_goods
+    where columnId = #{columnid,jdbcType=INTEGER}
+      and skuId = #{skuid,jdbcType=VARCHAR} and isValid=1
+  </select>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xiaolvquan_column_goods
+    where id = #{id,jdbcType=INTEGER} and isValid=1
+  </select>
+  <select id="selectByColumnId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xiaolvquan_column_goods
+    where columnId = #{columnId,jdbcType=INTEGER} and isValid=1
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanColumnGoodsKey">
+    delete from xiaolvquan_column_goods
+    where columnId = #{columnid,jdbcType=INTEGER}
+      and skuId = #{skuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanColumnGoods">
+    insert into xiaolvquan_column_goods (columnId, skuId, id, 
+      couponLink, skuSource, position, 
+      isValid, note)
+    values (#{columnid,jdbcType=INTEGER}, #{skuid,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, 
+      #{couponlink,jdbcType=VARCHAR}, #{skusource,jdbcType=TINYINT}, #{position,jdbcType=INTEGER}, 
+      #{isvalid,jdbcType=TINYINT}, #{note,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanColumnGoods">
+    insert into xiaolvquan_column_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="columnid != null">
+        columnId,
+      </if>
+      <if test="skuid != null">
+        skuId,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="couponlink != null">
+        couponLink,
+      </if>
+      <if test="skusource != null">
+        skuSource,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="isvalid != null">
+        isValid,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="columnid != null">
+        #{columnid,jdbcType=INTEGER},
+      </if>
+      <if test="skuid != null">
+        #{skuid,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="couponlink != null">
+        #{couponlink,jdbcType=VARCHAR},
+      </if>
+      <if test="skusource != null">
+        #{skusource,jdbcType=TINYINT},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=INTEGER},
+      </if>
+      <if test="isvalid != null">
+        #{isvalid,jdbcType=TINYINT},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanColumnGoods">
+    update xiaolvquan_column_goods
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="couponlink != null">
+        couponLink = #{couponlink,jdbcType=VARCHAR},
+      </if>
+      <if test="skusource != null">
+        skuSource = #{skusource,jdbcType=TINYINT},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=INTEGER},
+      </if>
+      <if test="isvalid != null">
+        isValid = #{isvalid,jdbcType=TINYINT},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where columnId = #{columnid,jdbcType=INTEGER}
+      and skuId = #{skuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanColumnGoods">
+    update xiaolvquan_column_goods
+    set id = #{id,jdbcType=INTEGER},
+      couponLink = #{couponlink,jdbcType=VARCHAR},
+      skuSource = #{skusource,jdbcType=TINYINT},
+      position = #{position,jdbcType=INTEGER},
+      isValid = #{isvalid,jdbcType=TINYINT},
+      note = #{note,jdbcType=LONGVARCHAR}
+    where columnId = #{columnid,jdbcType=INTEGER}
+      and skuId = #{skuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanColumnGoods">
+    update xiaolvquan_column_goods
+    set id = #{id,jdbcType=INTEGER},
+      couponLink = #{couponlink,jdbcType=VARCHAR},
+      skuSource = #{skusource,jdbcType=TINYINT},
+      position = #{position,jdbcType=INTEGER},
+      isValid = #{isvalid,jdbcType=TINYINT}
+    where columnId = #{columnid,jdbcType=INTEGER}
+      and skuId = #{skuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

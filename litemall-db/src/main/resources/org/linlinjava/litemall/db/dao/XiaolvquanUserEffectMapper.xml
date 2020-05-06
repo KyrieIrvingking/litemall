@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.linlinjava.litemall.db.dao.XiaolvquanUserEffectMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.XiaolvquanUserEffect">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="estimate_fee" jdbcType="DECIMAL" property="estimateFee" />
+    <result column="actual_fee" jdbcType="DECIMAL" property="actualFee" />
+    <result column="promotion_estimate_fee" jdbcType="DECIMAL" property="promotionEstimateFee" />
+    <result column="promotion_actual_fee" jdbcType="DECIMAL" property="promotionActualFee" />
+    <result column="recommend_estimate_fee" jdbcType="DECIMAL" property="recommendEstimateFee" />
+    <result column="recommend_actual_fee" jdbcType="DECIMAL" property="recommendActualFee" />
+    <result column="estimate_cos_price" jdbcType="DECIMAL" property="estimateCosPrice" />
+    <result column="actual_cos_price" jdbcType="DECIMAL" property="actualCosPrice" />
+    <result column="rebate_estimate_fee" jdbcType="DECIMAL" property="rebateEstimateFee" />
+    <result column="rebate_actual_fee" jdbcType="DECIMAL" property="rebateActualFee" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="order_price" jdbcType="INTEGER" property="orderPrice" />
+    <result column="day" jdbcType="TIMESTAMP" property="day" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, estimate_fee, actual_fee, promotion_estimate_fee, promotion_actual_fee, 
+    recommend_estimate_fee, recommend_actual_fee, estimate_cos_price, actual_cos_price, 
+    order_num, order_price, day, updateTime,rebate_estimate_fee,rebate_actual_fee
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xiaolvquan_user_effect_day
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectSumByByUserId" parameterType="java.lang.Integer" resultType="org.linlinjava.litemall.db.domain.XiaolvquanUserEffect">
+    select
+    sum(estimate_fee) as estimateFee,
+    sum(actual_fee) as actualFee,
+    sum(promotion_estimate_fee) as promotionEstimateFee,
+    sum(promotion_actual_fee) as promotionActualFee,
+    sum(recommend_estimate_fee) as recommendEstimateFee,
+    sum(recommend_actual_fee) as recommendActualFee,
+    sum(estimate_cos_price) as estimateCosPrice,
+    sum(actual_cos_price) as actualCosPrice,
+    sum(rebate_estimate_fee) as rebateEstimateFee,
+    sum(rebate_actual_fee) as rebateActualFee,
+    sum(order_num) as orderNum,
+    sum(order_price) as orderPrice
+    from xiaolvquan_user_effect_day
+    where user_id = #{userId,jdbcType=INTEGER}
+    <if test="startTime != null">
+      and day >= #{startTime,jdbcType=DECIMAL}
+    </if>
+    <if test="endTime != null">
+      and day &lt;= #{endTime,jdbcType=DECIMAL}
+    </if>
+  </select>
+
+  <select id="selectListByByUserId" parameterType="java.lang.Integer" resultType="org.linlinjava.litemall.db.domain.XiaolvquanUserEffect">
+    select
+    day,
+    sum(estimate_fee) as estimateFee,
+    sum(actual_fee) as actualFee,
+    sum(promotion_estimate_fee) as promotionEstimateFee,
+    sum(promotion_actual_fee) as promotionActualFee,
+    sum(recommend_estimate_fee) as recommendEstimateFee,
+    sum(recommend_actual_fee) as recommendActualFee,
+    sum(estimate_cos_price) as estimateCosPrice,
+    sum(actual_cos_price) as actualCosPrice,
+    sum(rebate_estimate_fee) as rebateEstimateFee,
+    sum(rebate_actual_fee) as rebateActualFee,
+    sum(order_num) as orderNum,
+    sum(order_price) as orderPrice
+    from xiaolvquan_user_effect_day
+    where user_id = #{userId,jdbcType=INTEGER}
+    <if test="startTime != null">
+      and day >= #{startTime,jdbcType=DECIMAL}
+    </if>
+    <if test="endTime != null">
+      and day &lt;= #{endTime,jdbcType=DECIMAL}
+    </if>
+    group by day
+    order by day desc
+    limit #{offset,jdbcType=INTEGER},#{pageNum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xiaolvquan_user_effect_day
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanUserEffect">
+    insert into xiaolvquan_user_effect_day (id, user_id, estimate_fee, 
+      actual_fee, promotion_estimate_fee, promotion_actual_fee, 
+      recommend_estimate_fee, recommend_actual_fee, 
+      estimate_cos_price, actual_cos_price, order_num, 
+      order_price, day, updateTime,rebate_estimate_fee,rebate_actual_fee
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{estimateFee,jdbcType=DECIMAL}, 
+      #{actualFee,jdbcType=DECIMAL}, #{promotionEstimateFee,jdbcType=DECIMAL}, #{promotionActualFee,jdbcType=DECIMAL}, 
+      #{recommendEstimateFee,jdbcType=DECIMAL}, #{recommendActualFee,jdbcType=DECIMAL}, 
+      #{estimateCosPrice,jdbcType=DECIMAL}, #{actualCosPrice,jdbcType=DECIMAL}, #{orderNum,jdbcType=INTEGER}, 
+      #{orderPrice,jdbcType=INTEGER}, #{day,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP},
+      #{rebateEstimateFee,jdbcType=DECIMAL}, #{rebateActualFee,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanUserEffect">
+    insert into xiaolvquan_user_effect_day
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="estimateFee != null">
+        estimate_fee,
+      </if>
+      <if test="actualFee != null">
+        actual_fee,
+      </if>
+      <if test="promotionEstimateFee != null">
+        promotion_estimate_fee,
+      </if>
+      <if test="promotionActualFee != null">
+        promotion_actual_fee,
+      </if>
+      <if test="recommendEstimateFee != null">
+        recommend_estimate_fee,
+      </if>
+      <if test="recommendActualFee != null">
+        recommend_actual_fee,
+      </if>
+      <if test="estimateCosPrice != null">
+        estimate_cos_price,
+      </if>
+      <if test="actualCosPrice != null">
+        actual_cos_price,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="orderPrice != null">
+        order_price,
+      </if>
+      <if test="day != null">
+        day,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="estimateFee != null">
+        #{estimateFee,jdbcType=DECIMAL},
+      </if>
+      <if test="actualFee != null">
+        #{actualFee,jdbcType=DECIMAL},
+      </if>
+      <if test="promotionEstimateFee != null">
+        #{promotionEstimateFee,jdbcType=DECIMAL},
+      </if>
+      <if test="promotionActualFee != null">
+        #{promotionActualFee,jdbcType=DECIMAL},
+      </if>
+      <if test="recommendEstimateFee != null">
+        #{recommendEstimateFee,jdbcType=DECIMAL},
+      </if>
+      <if test="recommendActualFee != null">
+        #{recommendActualFee,jdbcType=DECIMAL},
+      </if>
+      <if test="estimateCosPrice != null">
+        #{estimateCosPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="actualCosPrice != null">
+        #{actualCosPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="orderPrice != null">
+        #{orderPrice,jdbcType=INTEGER},
+      </if>
+      <if test="day != null">
+        #{day,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanUserEffect">
+    update xiaolvquan_user_effect_day
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="estimateFee != null">
+        estimate_fee = #{estimateFee,jdbcType=DECIMAL},
+      </if>
+      <if test="actualFee != null">
+        actual_fee = #{actualFee,jdbcType=DECIMAL},
+      </if>
+      <if test="promotionEstimateFee != null">
+        promotion_estimate_fee = #{promotionEstimateFee,jdbcType=DECIMAL},
+      </if>
+      <if test="promotionActualFee != null">
+        promotion_actual_fee = #{promotionActualFee,jdbcType=DECIMAL},
+      </if>
+      <if test="recommendEstimateFee != null">
+        recommend_estimate_fee = #{recommendEstimateFee,jdbcType=DECIMAL},
+      </if>
+      <if test="recommendActualFee != null">
+        recommend_actual_fee = #{recommendActualFee,jdbcType=DECIMAL},
+      </if>
+      <if test="estimateCosPrice != null">
+        estimate_cos_price = #{estimateCosPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="actualCosPrice != null">
+        actual_cos_price = #{actualCosPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="orderPrice != null">
+        order_price = #{orderPrice,jdbcType=INTEGER},
+      </if>
+      <if test="day != null">
+        day = #{day,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanUserEffect">
+    update xiaolvquan_user_effect_day
+    set user_id = #{userId,jdbcType=INTEGER},
+      estimate_fee = #{estimateFee,jdbcType=DECIMAL},
+      actual_fee = #{actualFee,jdbcType=DECIMAL},
+      promotion_estimate_fee = #{promotionEstimateFee,jdbcType=DECIMAL},
+      promotion_actual_fee = #{promotionActualFee,jdbcType=DECIMAL},
+      recommend_estimate_fee = #{recommendEstimateFee,jdbcType=DECIMAL},
+      recommend_actual_fee = #{recommendActualFee,jdbcType=DECIMAL},
+      estimate_cos_price = #{estimateCosPrice,jdbcType=DECIMAL},
+      actual_cos_price = #{actualCosPrice,jdbcType=DECIMAL},
+      order_num = #{orderNum,jdbcType=INTEGER},
+      order_price = #{orderPrice,jdbcType=INTEGER},
+      day = #{day,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

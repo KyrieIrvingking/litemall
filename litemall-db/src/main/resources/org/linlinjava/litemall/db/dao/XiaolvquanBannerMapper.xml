@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.linlinjava.litemall.db.dao.XiaolvquanBannerMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.XiaolvquanBanner">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="banner_url" jdbcType="VARCHAR" property="bannerUrl" />
+    <result column="detail_top" jdbcType="VARCHAR" property="detailTop" />
+    <result column="detail_pic" jdbcType="VARCHAR" property="detailPic" />
+    <result column="position" jdbcType="TINYINT" property="position" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.linlinjava.litemall.db.domain.XiaolvquanBanner">
+    <result column="detail_text" jdbcType="LONGVARCHAR" property="detailText" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, banner_url, detail_top, detail_pic, position, add_time, update_time, deleted
+  </sql>
+  <sql id="Blob_Column_List">
+    detail_text
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xiaolvquan_banner
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xiaolvquan_banner
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanBanner">
+    insert into xiaolvquan_banner (id, name, banner_url, 
+      detail_top, detail_pic, position, 
+      add_time, update_time, deleted, 
+      detail_text)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{bannerUrl,jdbcType=VARCHAR}, 
+      #{detailTop,jdbcType=VARCHAR}, #{detailPic,jdbcType=VARCHAR}, #{position,jdbcType=TINYINT}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, 
+      #{detailText,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanBanner">
+    insert into xiaolvquan_banner
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="bannerUrl != null">
+        banner_url,
+      </if>
+      <if test="detailTop != null">
+        detail_top,
+      </if>
+      <if test="detailPic != null">
+        detail_pic,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="detailText != null">
+        detail_text,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="bannerUrl != null">
+        #{bannerUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="detailTop != null">
+        #{detailTop,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPic != null">
+        #{detailPic,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=TINYINT},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="detailText != null">
+        #{detailText,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanBanner">
+    update xiaolvquan_banner
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="bannerUrl != null">
+        banner_url = #{bannerUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="detailTop != null">
+        detail_top = #{detailTop,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPic != null">
+        detail_pic = #{detailPic,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=TINYINT},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="detailText != null">
+        detail_text = #{detailText,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanBanner">
+    update xiaolvquan_banner
+    set name = #{name,jdbcType=VARCHAR},
+      banner_url = #{bannerUrl,jdbcType=VARCHAR},
+      detail_top = #{detailTop,jdbcType=VARCHAR},
+      detail_pic = #{detailPic,jdbcType=VARCHAR},
+      position = #{position,jdbcType=TINYINT},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT},
+      detail_text = #{detailText,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanBanner">
+    update xiaolvquan_banner
+    set name = #{name,jdbcType=VARCHAR},
+      banner_url = #{bannerUrl,jdbcType=VARCHAR},
+      detail_top = #{detailTop,jdbcType=VARCHAR},
+      detail_pic = #{detailPic,jdbcType=VARCHAR},
+      position = #{position,jdbcType=TINYINT},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

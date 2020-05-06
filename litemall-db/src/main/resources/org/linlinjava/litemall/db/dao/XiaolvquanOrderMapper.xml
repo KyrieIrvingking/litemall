@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.linlinjava.litemall.db.dao.XiaolvquanOrderMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.XiaolvquanOrder">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="orderId" jdbcType="INTEGER" property="orderid" />
+    <result column="parentId" jdbcType="INTEGER" property="parentid" />
+    <result column="orderEmt" jdbcType="TINYINT" property="orderemt" />
+    <result column="payMonth" jdbcType="VARCHAR" property="paymonth" />
+    <result column="plus" jdbcType="INTEGER" property="plus" />
+    <result column="popId" jdbcType="INTEGER" property="popid" />
+    <result column="unionId" jdbcType="BIGINT" property="unionid" />
+    <result column="ext1" jdbcType="VARCHAR" property="ext1" />
+    <result column="validCode" jdbcType="INTEGER" property="validcode" />
+    <result column="orderTime" jdbcType="INTEGER" property="ordertime" />
+    <result column="finishTime" jdbcType="INTEGER" property="finishtime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <collection property="goodsList" ofType="org.linlinjava.litemall.db.domain.XiaolvquanOrderGoods">
+      <id column="gid" jdbcType="INTEGER" property="id" />
+      <result column="orderId" jdbcType="BIGINT" property="orderid" />
+      <result column="skuId" jdbcType="BIGINT" property="skuid" />
+      <result column="skuName" jdbcType="VARCHAR" property="skuname" />
+      <result column="cid1" jdbcType="INTEGER" property="cid1" />
+      <result column="cid2" jdbcType="INTEGER" property="cid2" />
+      <result column="cid3" jdbcType="INTEGER" property="cid3" />
+      <result column="skuNum" jdbcType="INTEGER" property="skunum" />
+      <result column="skuReturnNum" jdbcType="INTEGER" property="skureturnnum" />
+      <result column="frozenSkuNum" jdbcType="INTEGER" property="frozenskunum" />
+      <result column="price" jdbcType="DECIMAL" property="price" />
+      <result column="actualFee" jdbcType="DECIMAL" property="actualfee" />
+      <result column="actualCosPrice" jdbcType="DECIMAL" property="actualcosprice" />
+      <result column="estimateCosPrice" jdbcType="DECIMAL" property="estimatecosprice" />
+      <result column="estimateFee" jdbcType="DECIMAL" property="estimatefee" />
+      <result column="commissionRate" jdbcType="INTEGER" property="commissionrate" />
+      <result column="finalRate" jdbcType="INTEGER" property="finalrate" />
+      <result column="ext1" jdbcType="INTEGER" property="ext1" />
+      <result column="payMonth" jdbcType="VARCHAR" property="paymonth" />
+      <result column="pid" jdbcType="VARCHAR" property="pid" />
+      <result column="popId" jdbcType="INTEGER" property="popid" />
+      <result column="positionId" jdbcType="INTEGER" property="positionid" />
+      <result column="siteId" jdbcType="INTEGER" property="siteid" />
+      <result column="subSideRate" jdbcType="INTEGER" property="subsiderate" />
+      <result column="subUnionId" jdbcType="INTEGER" property="subunionid" />
+      <result column="subsidyRate" jdbcType="INTEGER" property="subsidyrate" />
+      <result column="traceType" jdbcType="TINYINT" property="tracetype" />
+      <result column="unionAlias" jdbcType="VARCHAR" property="unionalias" />
+      <result column="unionTag" jdbcType="VARCHAR" property="uniontag" />
+      <result column="unionTrafficGroup" jdbcType="INTEGER" property="uniontrafficgroup" />
+      <result column="validCode" jdbcType="INTEGER" property="validcode" />
+      <result column="userId" jdbcType="VARCHAR" property="userid" />
+      <result column="xiaolvquanCommissionRate" jdbcType="INTEGER" property="xiaolvquancommissionrate" />
+      <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+      <result column="buyUserId" jdbcType="INTEGER" property="buyUserId" />
+      <result column="isRebate" jdbcType="BOOLEAN" property="isRebate" />
+      <result column="orderUserLevel" jdbcType="INTEGER" property="orderUserLevel" />
+    </collection>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, orderId, parentId, orderEmt, payMonth, plus, popId, unionId, ext1, validCode, 
+    orderTime, finishTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xiaolvquan_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectOrderByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    o.*,g.id as gid,g.*
+    from xiaolvquan_order as o,xiaolvquan_order_goods as g
+    where o.orderId=g.orderId and g.userId=#{userId,jdbcType=INTEGER}
+    <if test="startTime != null">
+      and o.orderTime>=#{startTime,jdbcType=BIGINT}
+    </if>
+    <if test="endTime != null">
+      and o.orderTime &lt;= #{endTime,jdbcType=VARCHAR}
+    </if>
+    <if test="validCode!=null and validCode.length!=0">
+      and
+      g.validCode
+      in
+      <foreach collection="validCode" item="item" index="index" open="(" separator="," close=")">
+        #{item,jdbcType=INTEGER}
+      </foreach>
+    </if>
+    <if test="buyUserId != 0">
+      and g.buyUserId = #{buyUserId,jdbcType=INTEGER}
+    </if>
+    order by o.orderTime desc
+    limit #{offset,jdbcType=INTEGER},#{pageNum,jdbcType=INTEGER}
+  </select>
+    <select id="selectOrderByOrderIdList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        o.*,g.*
+        from xiaolvquan_order as o,xiaolvquan_order_goods as g
+        where o.orderId=g.orderId
+        and o.orderId in
+        <foreach collection="orderIds" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        order by o.orderTime desc
+    </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xiaolvquan_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanOrder">
+    insert into xiaolvquan_order (id, orderId, parentId, 
+      orderEmt, payMonth, plus, 
+      popId, unionId, ext1, 
+      validCode, orderTime, finishTime, 
+      updateTime)
+    values (#{id,jdbcType=INTEGER}, #{orderid,jdbcType=INTEGER}, #{parentid,jdbcType=INTEGER}, 
+      #{orderemt,jdbcType=TINYINT}, #{paymonth,jdbcType=VARCHAR}, #{plus,jdbcType=INTEGER}, 
+      #{popid,jdbcType=INTEGER}, #{unionid,jdbcType=BIGINT}, #{ext1,jdbcType=VARCHAR}, 
+      #{validcode,jdbcType=INTEGER}, #{ordertime,jdbcType=INTEGER}, #{finishtime,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanOrder">
+    insert into xiaolvquan_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderid != null">
+        orderId,
+      </if>
+      <if test="parentid != null">
+        parentId,
+      </if>
+      <if test="orderemt != null">
+        orderEmt,
+      </if>
+      <if test="paymonth != null">
+        payMonth,
+      </if>
+      <if test="plus != null">
+        plus,
+      </if>
+      <if test="popid != null">
+        popId,
+      </if>
+      <if test="unionid != null">
+        unionId,
+      </if>
+      <if test="ext1 != null">
+        ext1,
+      </if>
+      <if test="validcode != null">
+        validCode,
+      </if>
+      <if test="ordertime != null">
+        orderTime,
+      </if>
+      <if test="finishtime != null">
+        finishTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="orderemt != null">
+        #{orderemt,jdbcType=TINYINT},
+      </if>
+      <if test="paymonth != null">
+        #{paymonth,jdbcType=VARCHAR},
+      </if>
+      <if test="plus != null">
+        #{plus,jdbcType=INTEGER},
+      </if>
+      <if test="popid != null">
+        #{popid,jdbcType=INTEGER},
+      </if>
+      <if test="unionid != null">
+        #{unionid,jdbcType=BIGINT},
+      </if>
+      <if test="ext1 != null">
+        #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="validcode != null">
+        #{validcode,jdbcType=INTEGER},
+      </if>
+      <if test="ordertime != null">
+        #{ordertime,jdbcType=INTEGER},
+      </if>
+      <if test="finishtime != null">
+        #{finishtime,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanOrder">
+    update xiaolvquan_order
+    <set>
+      <if test="orderid != null">
+        orderId = #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        parentId = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="orderemt != null">
+        orderEmt = #{orderemt,jdbcType=TINYINT},
+      </if>
+      <if test="paymonth != null">
+        payMonth = #{paymonth,jdbcType=VARCHAR},
+      </if>
+      <if test="plus != null">
+        plus = #{plus,jdbcType=INTEGER},
+      </if>
+      <if test="popid != null">
+        popId = #{popid,jdbcType=INTEGER},
+      </if>
+      <if test="unionid != null">
+        unionId = #{unionid,jdbcType=BIGINT},
+      </if>
+      <if test="ext1 != null">
+        ext1 = #{ext1,jdbcType=VARCHAR},
+      </if>
+      <if test="validcode != null">
+        validCode = #{validcode,jdbcType=INTEGER},
+      </if>
+      <if test="ordertime != null">
+        orderTime = #{ordertime,jdbcType=INTEGER},
+      </if>
+      <if test="finishtime != null">
+        finishTime = #{finishtime,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanOrder">
+    update xiaolvquan_order
+    set orderId = #{orderid,jdbcType=INTEGER},
+      parentId = #{parentid,jdbcType=INTEGER},
+      orderEmt = #{orderemt,jdbcType=TINYINT},
+      payMonth = #{paymonth,jdbcType=VARCHAR},
+      plus = #{plus,jdbcType=INTEGER},
+      popId = #{popid,jdbcType=INTEGER},
+      unionId = #{unionid,jdbcType=BIGINT},
+      ext1 = #{ext1,jdbcType=VARCHAR},
+      validCode = #{validcode,jdbcType=INTEGER},
+      orderTime = #{ordertime,jdbcType=INTEGER},
+      finishTime = #{finishtime,jdbcType=INTEGER},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

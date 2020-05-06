@@ -1,0 +1,291 @@
+2019-06-20 16:49:07,386 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 16:49:32,293 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 16:49:32,293 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '1' and month = '2019-05'
+          
+2019-06-20 16:49:32,294 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+60),update_time=now() where id=1
+2019-06-20 16:50:21,224 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 16:50:21,224 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '1' and month = '2019-05'
+          
+2019-06-20 16:50:21,225 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+60),update_time=now() where id=1
+2019-06-20 16:50:21,227 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=1
+2019-06-20 16:50:21,228 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '20' and month = '2019-05'
+          
+2019-06-20 16:50:21,229 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+111),update_time=now() where id=20
+2019-06-20 16:50:21,231 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=20
+2019-06-20 16:50:21,232 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '23' and month = '2019-05'
+          
+2019-06-20 16:50:21,233 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+78),update_time=now() where id=23
+2019-06-20 16:50:21,235 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=23
+2019-06-20 16:50:21,236 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '3' and month = '2019-05'
+          
+2019-06-20 16:50:21,237 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+150),update_time=now() where id=3
+2019-06-20 16:50:21,238 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=3
+2019-06-20 16:50:21,239 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '19' and month = '2019-05'
+          
+2019-06-20 16:50:21,240 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+26),update_time=now() where id=19
+2019-06-20 16:50:21,242 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=19
+2019-06-20 16:56:01,106 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 16:56:01,106 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '1' and month = '2019-05'
+          
+2019-06-20 16:56:01,108 - userBalance.py[line:46] - ERROR: Error:getNewMonthFee---->'select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '1' and month = '2019-05'
+          '
+2019-06-20 16:56:01,108 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=1
+2019-06-20 16:56:01,110 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_balance='1',update_time=now() where id=1
+2019-06-20 16:56:01,111 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '20' and month = '2019-05'
+          
+2019-06-20 16:56:01,112 - userBalance.py[line:46] - ERROR: Error:getNewMonthFee---->'select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '20' and month = '2019-05'
+          '
+2019-06-20 16:56:01,112 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=20
+2019-06-20 16:56:01,114 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_balance='1',update_time=now() where id=20
+2019-06-20 16:56:01,115 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '23' and month = '2019-05'
+          
+2019-06-20 16:56:01,116 - userBalance.py[line:46] - ERROR: Error:getNewMonthFee---->'select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '23' and month = '2019-05'
+          '
+2019-06-20 16:56:01,116 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=23
+2019-06-20 16:56:01,118 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_balance='1',update_time=now() where id=23
+2019-06-20 16:56:01,119 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '3' and month = '2019-05'
+          
+2019-06-20 16:56:01,120 - userBalance.py[line:46] - ERROR: Error:getNewMonthFee---->'select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '3' and month = '2019-05'
+          '
+2019-06-20 16:56:01,120 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=3
+2019-06-20 16:56:01,121 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_balance='1',update_time=now() where id=3
+2019-06-20 16:56:01,122 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '19' and month = '2019-05'
+          
+2019-06-20 16:56:01,123 - userBalance.py[line:46] - ERROR: Error:getNewMonthFee---->'select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '19' and month = '2019-05'
+          '
+2019-06-20 16:56:01,124 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=19
+2019-06-20 16:56:01,125 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_balance='1',update_time=now() where id=19
+2019-06-20 16:56:26,912 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 16:56:26,913 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '1' and month = '2019-05'
+          
+2019-06-20 16:56:26,914 - userBalance.py[line:46] - ERROR: Error:getNewMonthFee---->'select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '1' and month = '2019-05'
+          '
+2019-06-20 16:56:26,914 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=1
+2019-06-20 16:56:26,916 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_balance='1',update_time=now() where id=1
+2019-06-20 16:56:26,917 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '20' and month = '2019-05'
+          
+2019-06-20 16:56:26,918 - userBalance.py[line:46] - ERROR: Error:getNewMonthFee---->'select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '20' and month = '2019-05'
+          '
+2019-06-20 16:56:26,918 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=20
+2019-06-20 16:56:26,919 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_balance='1',update_time=now() where id=20
+2019-06-20 16:56:26,921 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '23' and month = '2019-05'
+          
+2019-06-20 16:56:26,921 - userBalance.py[line:46] - ERROR: Error:getNewMonthFee---->'select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '23' and month = '2019-05'
+          '
+2019-06-20 16:56:26,922 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=23
+2019-06-20 16:56:26,923 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_balance='1',update_time=now() where id=23
+2019-06-20 16:56:26,924 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '3' and month = '2019-05'
+          
+2019-06-20 16:56:26,925 - userBalance.py[line:46] - ERROR: Error:getNewMonthFee---->'select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '3' and month = '2019-05'
+          '
+2019-06-20 16:56:26,925 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=3
+2019-06-20 16:56:26,927 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_balance='1',update_time=now() where id=3
+2019-06-20 16:56:26,928 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '19' and month = '2019-05'
+          
+2019-06-20 16:56:26,929 - userBalance.py[line:46] - ERROR: Error:getNewMonthFee---->'select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_balance = '2' and user_id = '19' and month = '2019-05'
+          '
+2019-06-20 16:56:26,929 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=19
+2019-06-20 16:56:26,931 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_balance='1',update_time=now() where id=19
+2019-06-20 16:59:11,945 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 16:59:11,946 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '1' and month = '2019-05'
+          
+2019-06-20 16:59:11,947 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+60),update_time=now() where id=1
+2019-06-20 16:59:11,949 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=1
+2019-06-20 16:59:11,951 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '20' and month = '2019-05'
+          
+2019-06-20 16:59:11,952 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+111),update_time=now() where id=20
+2019-06-20 16:59:11,953 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=20
+2019-06-20 16:59:11,955 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '23' and month = '2019-05'
+          
+2019-06-20 16:59:11,956 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+78),update_time=now() where id=23
+2019-06-20 16:59:11,958 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=23
+2019-06-20 16:59:11,959 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '3' and month = '2019-05'
+          
+2019-06-20 16:59:11,960 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+150),update_time=now() where id=3
+2019-06-20 16:59:11,962 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=3
+2019-06-20 16:59:11,963 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '19' and month = '2019-05'
+          
+2019-06-20 16:59:11,964 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+26),update_time=now() where id=19
+2019-06-20 16:59:11,965 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=19
+2019-06-20 16:59:46,043 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 16:59:46,044 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '1' and month = '2019-05'
+          
+2019-06-20 16:59:46,045 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+60),update_time=now() where id=1
+2019-06-20 16:59:46,047 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=1
+2019-06-20 16:59:46,048 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '20' and month = '2019-05'
+          
+2019-06-20 16:59:46,049 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+111),update_time=now() where id=20
+2019-06-20 16:59:46,050 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=20
+2019-06-20 16:59:46,051 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '23' and month = '2019-05'
+          
+2019-06-20 16:59:46,052 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+78),update_time=now() where id=23
+2019-06-20 16:59:46,054 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=23
+2019-06-20 16:59:46,055 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '3' and month = '2019-05'
+          
+2019-06-20 16:59:46,056 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+150),update_time=now() where id=3
+2019-06-20 16:59:46,058 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=3
+2019-06-20 16:59:46,059 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '19' and month = '2019-05'
+          
+2019-06-20 16:59:46,059 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+26),update_time=now() where id=19
+2019-06-20 16:59:46,061 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',update_time=now() where id=19
+2019-06-20 17:01:51,905 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 17:01:51,906 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '1' and month = '2019-05'
+          
+2019-06-20 17:01:51,907 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+60),update_time=now() where id=1
+2019-06-20 17:01:51,909 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where id=1
+2019-06-20 17:01:51,910 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '20' and month = '2019-05'
+          
+2019-06-20 17:01:51,911 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+111),update_time=now() where id=20
+2019-06-20 17:01:51,912 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where id=20
+2019-06-20 17:01:51,914 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '23' and month = '2019-05'
+          
+2019-06-20 17:01:51,914 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+78),update_time=now() where id=23
+2019-06-20 17:01:51,916 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where id=23
+2019-06-20 17:01:51,917 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '3' and month = '2019-05'
+          
+2019-06-20 17:01:51,918 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+150),update_time=now() where id=3
+2019-06-20 17:01:51,920 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where id=3
+2019-06-20 17:01:51,921 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '19' and month = '2019-05'
+          
+2019-06-20 17:01:51,922 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+26),update_time=now() where id=19
+2019-06-20 17:01:51,924 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where id=19
+2019-06-20 17:03:51,721 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 17:03:51,722 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '1' and month = '2019-05'
+          
+2019-06-20 17:03:51,723 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+60),update_time=now() where id=1
+2019-06-20 17:03:51,725 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=1
+2019-06-20 17:03:51,726 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '20' and month = '2019-05'
+          
+2019-06-20 17:03:51,727 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+111),update_time=now() where id=20
+2019-06-20 17:03:51,729 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=20
+2019-06-20 17:03:51,731 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '23' and month = '2019-05'
+          
+2019-06-20 17:03:51,732 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+78),update_time=now() where id=23
+2019-06-20 17:03:51,734 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=23
+2019-06-20 17:03:51,735 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '3' and month = '2019-05'
+          
+2019-06-20 17:03:51,736 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+150),update_time=now() where id=3
+2019-06-20 17:03:51,738 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=3
+2019-06-20 17:03:51,740 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '19' and month = '2019-05'
+          
+2019-06-20 17:03:51,741 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+26),update_time=now() where id=19
+2019-06-20 17:03:51,743 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=19
+2019-06-20 17:04:06,322 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 17:04:06,323 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '1' and month = '2019-05'
+          
+2019-06-20 17:04:06,324 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=1
+2019-06-20 17:04:06,326 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=1
+2019-06-20 17:04:06,328 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '20' and month = '2019-05'
+          
+2019-06-20 17:04:06,329 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=20
+2019-06-20 17:04:06,333 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=20
+2019-06-20 17:04:06,335 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '23' and month = '2019-05'
+          
+2019-06-20 17:04:06,336 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=23
+2019-06-20 17:04:06,338 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=23
+2019-06-20 17:04:06,341 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '3' and month = '2019-05'
+          
+2019-06-20 17:04:06,342 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=3
+2019-06-20 17:04:06,344 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=3
+2019-06-20 17:04:06,345 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '19' and month = '2019-05'
+          
+2019-06-20 17:04:06,346 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=19
+2019-06-20 17:04:06,348 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=19
+2019-06-20 17:04:15,361 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 17:04:15,361 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '1' and month = '2019-05'
+          
+2019-06-20 17:04:15,362 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=1
+2019-06-20 17:04:15,364 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=1
+2019-06-20 17:04:15,366 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '20' and month = '2019-05'
+          
+2019-06-20 17:04:15,367 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=20
+2019-06-20 17:04:15,368 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=20
+2019-06-20 17:04:15,370 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '23' and month = '2019-05'
+          
+2019-06-20 17:04:15,371 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=23
+2019-06-20 17:04:15,373 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=23
+2019-06-20 17:04:15,374 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '3' and month = '2019-05'
+          
+2019-06-20 17:04:15,375 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=3
+2019-06-20 17:04:15,377 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=3
+2019-06-20 17:04:15,378 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '19' and month = '2019-05'
+          
+2019-06-20 17:04:15,379 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=19
+2019-06-20 17:04:15,381 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=19
+2019-06-20 17:04:16,201 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 17:04:16,202 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '1' and month = '2019-05'
+          
+2019-06-20 17:04:16,203 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=1
+2019-06-20 17:04:16,205 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=1
+2019-06-20 17:04:16,207 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '20' and month = '2019-05'
+          
+2019-06-20 17:04:16,208 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=20
+2019-06-20 17:04:16,209 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=20
+2019-06-20 17:04:16,211 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '23' and month = '2019-05'
+          
+2019-06-20 17:04:16,212 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=23
+2019-06-20 17:04:16,214 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=23
+2019-06-20 17:04:16,215 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '3' and month = '2019-05'
+          
+2019-06-20 17:04:16,216 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=3
+2019-06-20 17:04:16,218 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=3
+2019-06-20 17:04:16,219 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '19' and month = '2019-05'
+          
+2019-06-20 17:04:16,220 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=19
+2019-06-20 17:04:16,222 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=19
+2019-06-20 17:04:16,879 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 17:04:16,879 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '1' and month = '2019-05'
+          
+2019-06-20 17:04:16,880 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=1
+2019-06-20 17:04:16,882 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=1
+2019-06-20 17:04:16,884 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '20' and month = '2019-05'
+          
+2019-06-20 17:04:16,885 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=20
+2019-06-20 17:04:16,886 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=20
+2019-06-20 17:04:16,888 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '23' and month = '2019-05'
+          
+2019-06-20 17:04:16,889 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=23
+2019-06-20 17:04:16,891 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=23
+2019-06-20 17:04:16,893 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '3' and month = '2019-05'
+          
+2019-06-20 17:04:16,893 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=3
+2019-06-20 17:04:16,895 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=3
+2019-06-20 17:04:16,897 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '19' and month = '2019-05'
+          
+2019-06-20 17:04:16,898 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=19
+2019-06-20 17:04:16,899 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=19
+2019-06-20 17:04:17,484 - userBalance.py[line:53] - INFO: getAllUserIds---->select id as userId from xiaolvquan_user
+          
+2019-06-20 17:04:17,484 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '1' and month = '2019-05'
+          
+2019-06-20 17:04:17,485 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=1
+2019-06-20 17:04:17,488 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=1
+2019-06-20 17:04:17,489 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '20' and month = '2019-05'
+          
+2019-06-20 17:04:17,490 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=20
+2019-06-20 17:04:17,492 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=20
+2019-06-20 17:04:17,494 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '23' and month = '2019-05'
+          
+2019-06-20 17:04:17,495 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=23
+2019-06-20 17:04:17,497 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=23
+2019-06-20 17:04:17,499 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '3' and month = '2019-05'
+          
+2019-06-20 17:04:17,500 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=3
+2019-06-20 17:04:17,501 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=3
+2019-06-20 17:04:17,503 - userBalance.py[line:40] - INFO: getNewMonthFee---->select (promotion_actual_fee + recommend_actual_fee) as fee from xiaolvquan_user_bill_month where add_banlance = '2' and user_id = '19' and month = '2019-05'
+          
+2019-06-20 17:04:17,504 - userBalance.py[line:27] - INFO: updateUserBalance---->update xiaolvquan_user set banlance=(banlance+0),update_time=now() where id=19
+2019-06-20 17:04:17,506 - userBalance.py[line:33] - INFO: updateUserBalance---->update xiaolvquan_user_bill_month set add_banlance='1',updateTime=now() where user_id=19

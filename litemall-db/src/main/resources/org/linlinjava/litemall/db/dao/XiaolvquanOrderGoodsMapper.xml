@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.linlinjava.litemall.db.dao.XiaolvquanOrderGoodsMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.XiaolvquanOrderGoods">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="orderId" jdbcType="BIGINT" property="orderid" />
+    <result column="skuId" jdbcType="BIGINT" property="skuid" />
+    <result column="skuName" jdbcType="VARCHAR" property="skuname" />
+    <result column="cid1" jdbcType="INTEGER" property="cid1" />
+    <result column="cid2" jdbcType="INTEGER" property="cid2" />
+    <result column="cid3" jdbcType="INTEGER" property="cid3" />
+    <result column="skuNum" jdbcType="INTEGER" property="skunum" />
+    <result column="skuReturnNum" jdbcType="INTEGER" property="skureturnnum" />
+    <result column="frozenSkuNum" jdbcType="INTEGER" property="frozenskunum" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="actualFee" jdbcType="DECIMAL" property="actualfee" />
+    <result column="actualCosPrice" jdbcType="DECIMAL" property="actualcosprice" />
+    <result column="estimateCosPrice" jdbcType="DECIMAL" property="estimatecosprice" />
+    <result column="estimateFee" jdbcType="DECIMAL" property="estimatefee" />
+    <result column="commissionRate" jdbcType="INTEGER" property="commissionrate" />
+    <result column="finalRate" jdbcType="INTEGER" property="finalrate" />
+    <result column="ext1" jdbcType="INTEGER" property="ext1" />
+    <result column="payMonth" jdbcType="VARCHAR" property="paymonth" />
+    <result column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="popId" jdbcType="INTEGER" property="popid" />
+    <result column="positionId" jdbcType="INTEGER" property="positionid" />
+    <result column="siteId" jdbcType="INTEGER" property="siteid" />
+    <result column="subSideRate" jdbcType="INTEGER" property="subsiderate" />
+    <result column="subUnionId" jdbcType="INTEGER" property="subunionid" />
+    <result column="subsidyRate" jdbcType="INTEGER" property="subsidyrate" />
+    <result column="traceType" jdbcType="TINYINT" property="tracetype" />
+    <result column="unionAlias" jdbcType="VARCHAR" property="unionalias" />
+    <result column="unionTag" jdbcType="VARCHAR" property="uniontag" />
+    <result column="unionTrafficGroup" jdbcType="INTEGER" property="uniontrafficgroup" />
+    <result column="validCode" jdbcType="INTEGER" property="validcode" />
+    <result column="userId" jdbcType="VARCHAR" property="userid" />
+    <result column="xiaolvquanCommissionRate" jdbcType="INTEGER" property="xiaolvquancommissionrate" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="buyUserId" jdbcType="INTEGER" property="buyUserId" />
+    <result column="isRebate" jdbcType="BOOLEAN" property="isRebate" />
+    <result column="orderUserLevel" jdbcType="INTEGER" property="orderUserLevel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, orderId, skuId, skuName, cid1, cid2, cid3, skuNum, skuReturnNum, frozenSkuNum, 
+    price, actualFee, actualCosPrice, estimateCosPrice, estimateFee, commissionRate, 
+    finalRate, ext1, payMonth, pid, popId, positionId, siteId, subSideRate, subUnionId, 
+    subsidyRate, traceType, unionAlias, unionTag, unionTrafficGroup, validCode, userId, 
+    xiaolvquanCommissionRate, updateTime,buyUserId,isRebate,orderUserLevel
+  </sql>
+  <select id="selectOrderIdListByUserId" parameterType="java.lang.Integer" resultType="String">
+    select temp.orderId from
+    xiaolvquan_order_goods as temp
+    where
+    userId=#{userId,jdbcType=INTEGER}
+    <if test="startTime != null">
+      and orderTime>=#{startTime,jdbcType=BIGINT}
+    </if>
+    <if test="endTime != null">
+      and orderTime &lt;= #{endTime,jdbcType=VARCHAR}
+    </if>
+    <if test="validCode!=null and validCode.length!=0">
+      and
+      validCode
+      in
+      <foreach collection="validCode" item="item" index="index" open="(" separator="," close=")">
+        #{item,jdbcType=INTEGER}
+      </foreach>
+    </if>
+    <if test="buyUserId != 0">
+      and buyUserId = #{buyUserId,jdbcType=INTEGER}
+    </if>
+    group by orderId
+    order by orderTime desc
+    limit #{offset,jdbcType=INTEGER},#{pageNum,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xiaolvquan_order_goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xiaolvquan_order_goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanOrderGoods">
+    insert into xiaolvquan_order_goods (id, orderId, skuId, 
+      skuName, cid1, cid2, 
+      cid3, skuNum, skuReturnNum, 
+      frozenSkuNum, price, actualFee, 
+      actualCosPrice, estimateCosPrice, estimateFee, 
+      commissionRate, finalRate, ext1, 
+      payMonth, pid, popId, 
+      positionId, siteId, subSideRate, 
+      subUnionId, subsidyRate, traceType, 
+      unionAlias, unionTag, unionTrafficGroup, 
+      validCode, userId, xiaolvquanCommissionRate, 
+      updateTime,buyUserId,isRebate,orderUserLevel)
+    values (#{id,jdbcType=INTEGER}, #{orderid,jdbcType=BIGINT}, #{skuid,jdbcType=BIGINT}, 
+      #{skuname,jdbcType=VARCHAR}, #{cid1,jdbcType=INTEGER}, #{cid2,jdbcType=INTEGER}, 
+      #{cid3,jdbcType=INTEGER}, #{skunum,jdbcType=INTEGER}, #{skureturnnum,jdbcType=INTEGER}, 
+      #{frozenskunum,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{actualfee,jdbcType=DECIMAL}, 
+      #{actualcosprice,jdbcType=DECIMAL}, #{estimatecosprice,jdbcType=DECIMAL}, #{estimatefee,jdbcType=DECIMAL}, 
+      #{commissionrate,jdbcType=INTEGER}, #{finalrate,jdbcType=INTEGER}, #{ext1,jdbcType=INTEGER}, 
+      #{paymonth,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{popid,jdbcType=INTEGER}, 
+      #{positionid,jdbcType=INTEGER}, #{siteid,jdbcType=INTEGER}, #{subsiderate,jdbcType=INTEGER}, 
+      #{subunionid,jdbcType=INTEGER}, #{subsidyrate,jdbcType=INTEGER}, #{tracetype,jdbcType=TINYINT}, 
+      #{unionalias,jdbcType=VARCHAR}, #{uniontag,jdbcType=VARCHAR}, #{uniontrafficgroup,jdbcType=INTEGER}, 
+      #{validcode,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{xiaolvquancommissionrate,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=TIMESTAMP},#{buyUserId,jdbcType=INTEGER},#{isRebate,jdbcType=BOOLEAN},#{orderUserLevel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanOrderGoods">
+    insert into xiaolvquan_order_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderid != null">
+        orderId,
+      </if>
+      <if test="skuid != null">
+        skuId,
+      </if>
+      <if test="skuname != null">
+        skuName,
+      </if>
+      <if test="cid1 != null">
+        cid1,
+      </if>
+      <if test="cid2 != null">
+        cid2,
+      </if>
+      <if test="cid3 != null">
+        cid3,
+      </if>
+      <if test="skunum != null">
+        skuNum,
+      </if>
+      <if test="skureturnnum != null">
+        skuReturnNum,
+      </if>
+      <if test="frozenskunum != null">
+        frozenSkuNum,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="actualfee != null">
+        actualFee,
+      </if>
+      <if test="actualcosprice != null">
+        actualCosPrice,
+      </if>
+      <if test="estimatecosprice != null">
+        estimateCosPrice,
+      </if>
+      <if test="estimatefee != null">
+        estimateFee,
+      </if>
+      <if test="commissionrate != null">
+        commissionRate,
+      </if>
+      <if test="finalrate != null">
+        finalRate,
+      </if>
+      <if test="ext1 != null">
+        ext1,
+      </if>
+      <if test="paymonth != null">
+        payMonth,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="popid != null">
+        popId,
+      </if>
+      <if test="positionid != null">
+        positionId,
+      </if>
+      <if test="siteid != null">
+        siteId,
+      </if>
+      <if test="subsiderate != null">
+        subSideRate,
+      </if>
+      <if test="subunionid != null">
+        subUnionId,
+      </if>
+      <if test="subsidyrate != null">
+        subsidyRate,
+      </if>
+      <if test="tracetype != null">
+        traceType,
+      </if>
+      <if test="unionalias != null">
+        unionAlias,
+      </if>
+      <if test="uniontag != null">
+        unionTag,
+      </if>
+      <if test="uniontrafficgroup != null">
+        unionTrafficGroup,
+      </if>
+      <if test="validcode != null">
+        validCode,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="xiaolvquancommissionrate != null">
+        xiaolvquanCommissionRate,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=BIGINT},
+      </if>
+      <if test="skuid != null">
+        #{skuid,jdbcType=BIGINT},
+      </if>
+      <if test="skuname != null">
+        #{skuname,jdbcType=VARCHAR},
+      </if>
+      <if test="cid1 != null">
+        #{cid1,jdbcType=INTEGER},
+      </if>
+      <if test="cid2 != null">
+        #{cid2,jdbcType=INTEGER},
+      </if>
+      <if test="cid3 != null">
+        #{cid3,jdbcType=INTEGER},
+      </if>
+      <if test="skunum != null">
+        #{skunum,jdbcType=INTEGER},
+      </if>
+      <if test="skureturnnum != null">
+        #{skureturnnum,jdbcType=INTEGER},
+      </if>
+      <if test="frozenskunum != null">
+        #{frozenskunum,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="actualfee != null">
+        #{actualfee,jdbcType=DECIMAL},
+      </if>
+      <if test="actualcosprice != null">
+        #{actualcosprice,jdbcType=DECIMAL},
+      </if>
+      <if test="estimatecosprice != null">
+        #{estimatecosprice,jdbcType=DECIMAL},
+      </if>
+      <if test="estimatefee != null">
+        #{estimatefee,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionrate != null">
+        #{commissionrate,jdbcType=INTEGER},
+      </if>
+      <if test="finalrate != null">
+        #{finalrate,jdbcType=INTEGER},
+      </if>
+      <if test="ext1 != null">
+        #{ext1,jdbcType=INTEGER},
+      </if>
+      <if test="paymonth != null">
+        #{paymonth,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="popid != null">
+        #{popid,jdbcType=INTEGER},
+      </if>
+      <if test="positionid != null">
+        #{positionid,jdbcType=INTEGER},
+      </if>
+      <if test="siteid != null">
+        #{siteid,jdbcType=INTEGER},
+      </if>
+      <if test="subsiderate != null">
+        #{subsiderate,jdbcType=INTEGER},
+      </if>
+      <if test="subunionid != null">
+        #{subunionid,jdbcType=INTEGER},
+      </if>
+      <if test="subsidyrate != null">
+        #{subsidyrate,jdbcType=INTEGER},
+      </if>
+      <if test="tracetype != null">
+        #{tracetype,jdbcType=TINYINT},
+      </if>
+      <if test="unionalias != null">
+        #{unionalias,jdbcType=VARCHAR},
+      </if>
+      <if test="uniontag != null">
+        #{uniontag,jdbcType=VARCHAR},
+      </if>
+      <if test="uniontrafficgroup != null">
+        #{uniontrafficgroup,jdbcType=INTEGER},
+      </if>
+      <if test="validcode != null">
+        #{validcode,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="xiaolvquancommissionrate != null">
+        #{xiaolvquancommissionrate,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanOrderGoods">
+    update xiaolvquan_order_goods
+    <set>
+      <if test="orderid != null">
+        orderId = #{orderid,jdbcType=BIGINT},
+      </if>
+      <if test="skuid != null">
+        skuId = #{skuid,jdbcType=BIGINT},
+      </if>
+      <if test="skuname != null">
+        skuName = #{skuname,jdbcType=VARCHAR},
+      </if>
+      <if test="cid1 != null">
+        cid1 = #{cid1,jdbcType=INTEGER},
+      </if>
+      <if test="cid2 != null">
+        cid2 = #{cid2,jdbcType=INTEGER},
+      </if>
+      <if test="cid3 != null">
+        cid3 = #{cid3,jdbcType=INTEGER},
+      </if>
+      <if test="skunum != null">
+        skuNum = #{skunum,jdbcType=INTEGER},
+      </if>
+      <if test="skureturnnum != null">
+        skuReturnNum = #{skureturnnum,jdbcType=INTEGER},
+      </if>
+      <if test="frozenskunum != null">
+        frozenSkuNum = #{frozenskunum,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="actualfee != null">
+        actualFee = #{actualfee,jdbcType=DECIMAL},
+      </if>
+      <if test="actualcosprice != null">
+        actualCosPrice = #{actualcosprice,jdbcType=DECIMAL},
+      </if>
+      <if test="estimatecosprice != null">
+        estimateCosPrice = #{estimatecosprice,jdbcType=DECIMAL},
+      </if>
+      <if test="estimatefee != null">
+        estimateFee = #{estimatefee,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionrate != null">
+        commissionRate = #{commissionrate,jdbcType=INTEGER},
+      </if>
+      <if test="finalrate != null">
+        finalRate = #{finalrate,jdbcType=INTEGER},
+      </if>
+      <if test="ext1 != null">
+        ext1 = #{ext1,jdbcType=INTEGER},
+      </if>
+      <if test="paymonth != null">
+        payMonth = #{paymonth,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="popid != null">
+        popId = #{popid,jdbcType=INTEGER},
+      </if>
+      <if test="positionid != null">
+        positionId = #{positionid,jdbcType=INTEGER},
+      </if>
+      <if test="siteid != null">
+        siteId = #{siteid,jdbcType=INTEGER},
+      </if>
+      <if test="subsiderate != null">
+        subSideRate = #{subsiderate,jdbcType=INTEGER},
+      </if>
+      <if test="subunionid != null">
+        subUnionId = #{subunionid,jdbcType=INTEGER},
+      </if>
+      <if test="subsidyrate != null">
+        subsidyRate = #{subsidyrate,jdbcType=INTEGER},
+      </if>
+      <if test="tracetype != null">
+        traceType = #{tracetype,jdbcType=TINYINT},
+      </if>
+      <if test="unionalias != null">
+        unionAlias = #{unionalias,jdbcType=VARCHAR},
+      </if>
+      <if test="uniontag != null">
+        unionTag = #{uniontag,jdbcType=VARCHAR},
+      </if>
+      <if test="uniontrafficgroup != null">
+        unionTrafficGroup = #{uniontrafficgroup,jdbcType=INTEGER},
+      </if>
+      <if test="validcode != null">
+        validCode = #{validcode,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="xiaolvquancommissionrate != null">
+        xiaolvquanCommissionRate = #{xiaolvquancommissionrate,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanOrderGoods">
+    update xiaolvquan_order_goods
+    set orderId = #{orderid,jdbcType=BIGINT},
+      skuId = #{skuid,jdbcType=BIGINT},
+      skuName = #{skuname,jdbcType=VARCHAR},
+      cid1 = #{cid1,jdbcType=INTEGER},
+      cid2 = #{cid2,jdbcType=INTEGER},
+      cid3 = #{cid3,jdbcType=INTEGER},
+      skuNum = #{skunum,jdbcType=INTEGER},
+      skuReturnNum = #{skureturnnum,jdbcType=INTEGER},
+      frozenSkuNum = #{frozenskunum,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      actualFee = #{actualfee,jdbcType=DECIMAL},
+      actualCosPrice = #{actualcosprice,jdbcType=DECIMAL},
+      estimateCosPrice = #{estimatecosprice,jdbcType=DECIMAL},
+      estimateFee = #{estimatefee,jdbcType=DECIMAL},
+      commissionRate = #{commissionrate,jdbcType=INTEGER},
+      finalRate = #{finalrate,jdbcType=INTEGER},
+      ext1 = #{ext1,jdbcType=INTEGER},
+      payMonth = #{paymonth,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=VARCHAR},
+      popId = #{popid,jdbcType=INTEGER},
+      positionId = #{positionid,jdbcType=INTEGER},
+      siteId = #{siteid,jdbcType=INTEGER},
+      subSideRate = #{subsiderate,jdbcType=INTEGER},
+      subUnionId = #{subunionid,jdbcType=INTEGER},
+      subsidyRate = #{subsidyrate,jdbcType=INTEGER},
+      traceType = #{tracetype,jdbcType=TINYINT},
+      unionAlias = #{unionalias,jdbcType=VARCHAR},
+      unionTag = #{uniontag,jdbcType=VARCHAR},
+      unionTrafficGroup = #{uniontrafficgroup,jdbcType=INTEGER},
+      validCode = #{validcode,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=VARCHAR},
+      xiaolvquanCommissionRate = #{xiaolvquancommissionrate,jdbcType=INTEGER},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

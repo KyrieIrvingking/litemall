@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.linlinjava.litemall.db.dao.XiaolvquanCommissionConfigMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.XiaolvquanCommissionConfig">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_level" jdbcType="INTEGER" property="userLevel" />
+    <result column="user_level_name" jdbcType="VARCHAR" property="userLevelName" />
+    <result column="min_invite_users" jdbcType="INTEGER" property="minInviteUsers" />
+    <result column="max_invite_users" jdbcType="INTEGER" property="maxInviteUsers" />
+    <result column="promotion_rate" jdbcType="INTEGER" property="promotionRate" />
+    <result column="recommend_rate" jdbcType="INTEGER" property="recommendRate" />
+    <result column="nocoupon_rebate_rate" jdbcType="INTEGER" property="nocouponRebateRate" />
+    <result column="nocoupon_rebate_promotion_rate" jdbcType="INTEGER" property="nocouponRebatePromotionRate" />
+    <result column="nocoupon_promotion_rate" jdbcType="INTEGER" property="nocouponPromotionRate" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_level, user_level_name, min_invite_users, max_invite_users, promotion_rate, 
+    recommend_rate, nocoupon_rebate_rate, nocoupon_rebate_promotion_rate, nocoupon_promotion_rate, 
+    add_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xiaolvquan_commission_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUserLevel" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xiaolvquan_commission_config
+    where user_level = #{userLevel,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xiaolvquan_commission_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanCommissionConfig">
+    insert into xiaolvquan_commission_config (id, user_level, user_level_name, 
+      min_invite_users, max_invite_users, promotion_rate, 
+      recommend_rate, nocoupon_rebate_rate, nocoupon_rebate_promotion_rate, 
+      nocoupon_promotion_rate, add_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{userLevel,jdbcType=INTEGER}, #{userLevelName,jdbcType=VARCHAR}, 
+      #{minInviteUsers,jdbcType=INTEGER}, #{maxInviteUsers,jdbcType=INTEGER}, #{promotionRate,jdbcType=INTEGER}, 
+      #{recommendRate,jdbcType=INTEGER}, #{nocouponRebateRate,jdbcType=INTEGER}, #{nocouponRebatePromotionRate,jdbcType=INTEGER}, 
+      #{nocouponPromotionRate,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanCommissionConfig">
+    insert into xiaolvquan_commission_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userLevel != null">
+        user_level,
+      </if>
+      <if test="userLevelName != null">
+        user_level_name,
+      </if>
+      <if test="minInviteUsers != null">
+        min_invite_users,
+      </if>
+      <if test="maxInviteUsers != null">
+        max_invite_users,
+      </if>
+      <if test="promotionRate != null">
+        promotion_rate,
+      </if>
+      <if test="recommendRate != null">
+        recommend_rate,
+      </if>
+      <if test="nocouponRebateRate != null">
+        nocoupon_rebate_rate,
+      </if>
+      <if test="nocouponRebatePromotionRate != null">
+        nocoupon_rebate_promotion_rate,
+      </if>
+      <if test="nocouponPromotionRate != null">
+        nocoupon_promotion_rate,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userLevel != null">
+        #{userLevel,jdbcType=INTEGER},
+      </if>
+      <if test="userLevelName != null">
+        #{userLevelName,jdbcType=VARCHAR},
+      </if>
+      <if test="minInviteUsers != null">
+        #{minInviteUsers,jdbcType=INTEGER},
+      </if>
+      <if test="maxInviteUsers != null">
+        #{maxInviteUsers,jdbcType=INTEGER},
+      </if>
+      <if test="promotionRate != null">
+        #{promotionRate,jdbcType=INTEGER},
+      </if>
+      <if test="recommendRate != null">
+        #{recommendRate,jdbcType=INTEGER},
+      </if>
+      <if test="nocouponRebateRate != null">
+        #{nocouponRebateRate,jdbcType=INTEGER},
+      </if>
+      <if test="nocouponRebatePromotionRate != null">
+        #{nocouponRebatePromotionRate,jdbcType=INTEGER},
+      </if>
+      <if test="nocouponPromotionRate != null">
+        #{nocouponPromotionRate,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanCommissionConfig">
+    update xiaolvquan_commission_config
+    <set>
+      <if test="userLevel != null">
+        user_level = #{userLevel,jdbcType=INTEGER},
+      </if>
+      <if test="userLevelName != null">
+        user_level_name = #{userLevelName,jdbcType=VARCHAR},
+      </if>
+      <if test="minInviteUsers != null">
+        min_invite_users = #{minInviteUsers,jdbcType=INTEGER},
+      </if>
+      <if test="maxInviteUsers != null">
+        max_invite_users = #{maxInviteUsers,jdbcType=INTEGER},
+      </if>
+      <if test="promotionRate != null">
+        promotion_rate = #{promotionRate,jdbcType=INTEGER},
+      </if>
+      <if test="recommendRate != null">
+        recommend_rate = #{recommendRate,jdbcType=INTEGER},
+      </if>
+      <if test="nocouponRebateRate != null">
+        nocoupon_rebate_rate = #{nocouponRebateRate,jdbcType=INTEGER},
+      </if>
+      <if test="nocouponRebatePromotionRate != null">
+        nocoupon_rebate_promotion_rate = #{nocouponRebatePromotionRate,jdbcType=INTEGER},
+      </if>
+      <if test="nocouponPromotionRate != null">
+        nocoupon_promotion_rate = #{nocouponPromotionRate,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanCommissionConfig">
+    update xiaolvquan_commission_config
+    set user_level = #{userLevel,jdbcType=INTEGER},
+      user_level_name = #{userLevelName,jdbcType=VARCHAR},
+      min_invite_users = #{minInviteUsers,jdbcType=INTEGER},
+      max_invite_users = #{maxInviteUsers,jdbcType=INTEGER},
+      promotion_rate = #{promotionRate,jdbcType=INTEGER},
+      recommend_rate = #{recommendRate,jdbcType=INTEGER},
+      nocoupon_rebate_rate = #{nocouponRebateRate,jdbcType=INTEGER},
+      nocoupon_rebate_promotion_rate = #{nocouponRebatePromotionRate,jdbcType=INTEGER},
+      nocoupon_promotion_rate = #{nocouponPromotionRate,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

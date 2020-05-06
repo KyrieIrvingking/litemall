@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.linlinjava.litemall.db.dao.XiaolvquanColumnConfigMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.XiaolvquanColumnConfig">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="typeName" jdbcType="VARCHAR" property="typename" />
+    <result column="imgUrl" jdbcType="VARCHAR" property="imgurl" />
+    <result column="position" jdbcType="TINYINT" property="position" />
+    <result column="colType" jdbcType="TINYINT" property="coltype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, typeName, imgUrl, position, colType
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xiaolvquan_column_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByColType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xiaolvquan_column_config
+    where colType = #{colType,jdbcType=INTEGER} and deleted != 1
+    group by position asc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xiaolvquan_column_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanColumnConfig">
+    insert into xiaolvquan_column_config (id, type, typeName, 
+      imgUrl, position, colType
+      )
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=TINYINT}, #{typename,jdbcType=VARCHAR}, 
+      #{imgurl,jdbcType=VARCHAR}, #{position,jdbcType=TINYINT}, #{coltype,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanColumnConfig">
+    insert into xiaolvquan_column_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="typename != null">
+        typeName,
+      </if>
+      <if test="imgurl != null">
+        imgUrl,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="coltype != null">
+        colType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="typename != null">
+        #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl != null">
+        #{imgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=TINYINT},
+      </if>
+      <if test="coltype != null">
+        #{coltype,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanColumnConfig">
+    update xiaolvquan_column_config
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="typename != null">
+        typeName = #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl != null">
+        imgUrl = #{imgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=TINYINT},
+      </if>
+      <if test="coltype != null">
+        colType = #{coltype,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanColumnConfig">
+    update xiaolvquan_column_config
+    set type = #{type,jdbcType=TINYINT},
+      typeName = #{typename,jdbcType=VARCHAR},
+      imgUrl = #{imgurl,jdbcType=VARCHAR},
+      position = #{position,jdbcType=TINYINT},
+      colType = #{coltype,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

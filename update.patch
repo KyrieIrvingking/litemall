@@ -1,0 +1,83 @@
+Index: litemall-wx-api/src/main/java/org/linlinjava/litemall/wx/service/BannerService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- litemall-wx-api/src/main/java/org/linlinjava/litemall/wx/service/BannerService.java	(revision 02599eeb375c4524326b700cbcf8a68a70cb7b9e)
++++ litemall-wx-api/src/main/java/org/linlinjava/litemall/wx/service/BannerService.java	(date 1563185075456)
+@@ -50,11 +50,10 @@
+ 
+     /**
+      * 查询banner内容，并转链
+-     * @param subunionId
+      * @param Id
+      * @return
+      */
+-    public Object getContentAndTranslink(String subunionId,Integer Id,Integer userId) {
++    public Object getContentAndTranslink(Integer Id,Integer userId) {
+         List<String> shortLinkList = new ArrayList<>();
+         List<String> linkList = new ArrayList<>();
+         XiaolvquanBanner xiaolvquanBanner = new XiaolvquanBanner();
+@@ -73,7 +72,7 @@
+             }
+         }
+         String[] linkArr = linkList.toArray(new String[linkList.size()]);
+-        shortLinkList = commodityService.batchTranslink(subunionId, linkArr,userId);
++        shortLinkList = commodityService.batchTranslink(linkArr,userId);
+         logger.info(linkList);
+         logger.info(shortLinkList);
+         for (int i = 0; i < linkList.size(); i++) {
+Index: litemall-wx-api/src/main/java/org/linlinjava/litemall/wx/service/CommodityService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- litemall-wx-api/src/main/java/org/linlinjava/litemall/wx/service/CommodityService.java	(revision 02599eeb375c4524326b700cbcf8a68a70cb7b9e)
++++ litemall-wx-api/src/main/java/org/linlinjava/litemall/wx/service/CommodityService.java	(date 1563185075404)
+@@ -71,11 +71,10 @@
+ 
+     /**
+      * 批量转链接
+-     * @param subUnionId
+      * @param linkArr
+      * @return
+      */
+-    public List batchTranslink(String subUnionId,String[] linkArr,Integer userId){
++    public List batchTranslink(String[] linkArr,Integer userId){
+         LitemallUser user = userService.findById(userId);
+         //根据短链接查询商品
+         List<String> shortLinkList = new ArrayList<>();
+@@ -89,13 +88,13 @@
+                 String materialId = jdCommodityDto.getMaterialUrl();
+                 String couponUrl = jdCommodityDto.getLink();
+                 //转链接
++                String thirdPos = jdCommodityDto.getLink()==null?"1":"2";
++                String subUnionId = userId.toString() + "_0"  + "_1"+ "_"+user.getUserLevel();
+                 PromotionCodeReq promotionCodeReq = new PromotionCodeReq();
+                 promotionCodeReq.setMaterialId(materialId);
+                 promotionCodeReq.setCouponUrl(couponUrl);
+                 promotionCodeReq.setSubUnionId(subUnionId);
+                 //调用转链接接口
+-                String thirdPos = jdCommodityDto.getLink()==null?"1":"2";
+-                subUnionId = userId.toString() + "_0"  + "_1"+ "_"+user.getUserLevel();
+                 UnionOpenPromotionBysubunionidGetResponse promotionBysubunionidGetResponse = jd.getLinkBySubunionid(promotionCodeReq);
+                 if (promotionBysubunionidGetResponse.getData()!=null){
+                     String shortUrl = promotionBysubunionidGetResponse.getData().getShortURL();
+Index: litemall-wx-api/src/main/java/org/linlinjava/litemall/wx/web/WxBannerController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- litemall-wx-api/src/main/java/org/linlinjava/litemall/wx/web/WxBannerController.java	(revision 02599eeb375c4524326b700cbcf8a68a70cb7b9e)
++++ litemall-wx-api/src/main/java/org/linlinjava/litemall/wx/web/WxBannerController.java	(date 1563185075441)
+@@ -39,8 +39,7 @@
+         if (userId == null) {
+             return ResponseUtil.unlogin();
+         }
+-        String subUnionId = userId.toString() + "_0"  + "_2";
+-        return this.bannerService.getContentAndTranslink(subUnionId,Id,userId);
++        return this.bannerService.getContentAndTranslink(Id,userId);
+     }
+ 
+ }
+\ No newline at end of file

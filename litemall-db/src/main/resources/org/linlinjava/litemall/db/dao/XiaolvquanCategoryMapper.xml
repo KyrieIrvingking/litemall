@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.linlinjava.litemall.db.dao.XiaolvquanCategoryMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.XiaolvquanCategory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="cid1" jdbcType="INTEGER" property="cid1" />
+    <result column="cid2" jdbcType="INTEGER" property="cid2" />
+    <result column="cid3" jdbcType="INTEGER" property="cid3" />
+    <result column="sort_order" jdbcType="TINYINT" property="sortOrder" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, cid1, cid2, cid3, sort_order, `desc`, add_time, update_time, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xiaolvquan_category
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByQuery" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xiaolvquan_category
+    where 1=1
+    order by sort_order asc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xiaolvquan_category
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanCategory">
+    insert into xiaolvquan_category (id, name, cid1, 
+      cid2, cid3, sort_order, 
+      desc, add_time, update_time, 
+      deleted)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{cid1,jdbcType=INTEGER}, 
+      #{cid2,jdbcType=INTEGER}, #{cid3,jdbcType=INTEGER}, #{sortOrder,jdbcType=TINYINT}, 
+      #{desc,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanCategory">
+    insert into xiaolvquan_category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="cid1 != null">
+        cid1,
+      </if>
+      <if test="cid2 != null">
+        cid2,
+      </if>
+      <if test="cid3 != null">
+        cid3,
+      </if>
+      <if test="sortOrder != null">
+        sort_order,
+      </if>
+      <if test="desc != null">
+        desc,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cid1 != null">
+        #{cid1,jdbcType=INTEGER},
+      </if>
+      <if test="cid2 != null">
+        #{cid2,jdbcType=INTEGER},
+      </if>
+      <if test="cid3 != null">
+        #{cid3,jdbcType=INTEGER},
+      </if>
+      <if test="sortOrder != null">
+        #{sortOrder,jdbcType=TINYINT},
+      </if>
+      <if test="desc != null">
+        #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanCategory">
+    update xiaolvquan_category
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cid1 != null">
+        cid1 = #{cid1,jdbcType=INTEGER},
+      </if>
+      <if test="cid2 != null">
+        cid2 = #{cid2,jdbcType=INTEGER},
+      </if>
+      <if test="cid3 != null">
+        cid3 = #{cid3,jdbcType=INTEGER},
+      </if>
+      <if test="sortOrder != null">
+        sort_order = #{sortOrder,jdbcType=TINYINT},
+      </if>
+      <if test="desc != null">
+        desc = #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.XiaolvquanCategory">
+    update xiaolvquan_category
+    set name = #{name,jdbcType=VARCHAR},
+      cid1 = #{cid1,jdbcType=INTEGER},
+      cid2 = #{cid2,jdbcType=INTEGER},
+      cid3 = #{cid3,jdbcType=INTEGER},
+      sort_order = #{sortOrder,jdbcType=TINYINT},
+      desc = #{desc,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
